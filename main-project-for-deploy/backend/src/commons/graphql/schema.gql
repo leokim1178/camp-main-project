@@ -1,0 +1,182 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CarType {
+  id: String!
+  type: String!
+  description: String!
+}
+
+type CarTag {
+  id: String!
+  name: String!
+  carModel: [CarModel!]!
+}
+
+type CarModel {
+  id: String!
+  model: String!
+  range: Int!
+  speed: Int!
+  zero100: Float!
+  price: Int!
+  wd: String!
+  description: String!
+  deletedAt: DateTime
+  carType: CarType!
+  carTags: [CarTag!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type CarWheel {
+  wheelId: String!
+  wheelName: String!
+  wheelSize: Int!
+  wheelPrice: Int!
+  updatedAt: DateTime!
+}
+
+type CarCustom {
+  id: String!
+  color: String!
+  interior: String!
+  isAuto: Boolean!
+  autoPrice: Int
+  carWheel: CarWheel!
+  carModel: CarModel!
+  updatedAt: DateTime!
+}
+
+type CarImg {
+  id: String!
+  imgURL: String!
+  carCustom: CarCustom!
+  updatedAt: DateTime!
+}
+
+type User {
+  id: String!
+  email: String!
+  name: String!
+  age: String!
+  deletedAt: DateTime
+  updatedAt: DateTime!
+  point: Int!
+}
+
+type Payment {
+  id: String!
+  impUid: String!
+  merchantUid: String!
+  amount: Int!
+  carCustom: CarCustom!
+  user: User!
+  status: PAYMENT_STATUS_ENUM!
+  cancelReason: String
+  createdAt: DateTime!
+  deletedAt: DateTime
+}
+
+enum PAYMENT_STATUS_ENUM {
+  PAYMENT
+  CANCEL
+}
+
+type Query {
+  fetchCarModels: [CarModel!]!
+  fetchCarModel(carModelId: String!): CarModel!
+  fetchCarCustoms: [CarCustom!]!
+  fetchCarCustom(carCustomId: String!): CarCustom!
+  fetchCarType(search: String!): [CarType!]!
+  fetch: String!
+  fetchUsers: [User!]!
+  fetchUser(email: String!): User!
+}
+
+type Mutation {
+  createCarModel(createCarModelInput: CreateCarModelInput!): CarModel!
+  updateCarModel(carModelId: String!, updateCarModelInput: UpdateCarModelInput!): CarModel!
+  deleteCarModel(carModelId: String!): Boolean!
+  restoreCarModel(carModelId: String!): Boolean!
+  createCarCustom(createCarCustomInput: CreateCarCustomInput!): CarCustom!
+  updateCarCustom(carCustomId: String!, updateCarCustomInput: UpdateCarCustomInput!): CarCustom!
+  deleteCarCustom(carCustomId: String!): Boolean!
+  restoreCarCustom(carCustomId: String!): Boolean!
+  createCarType(id: String!, type: String!, description: String!): CarType!
+  uploadImg(imgs: [Upload!]!): [String!]!
+  createCarImgs(carCustomId: String!, imgURLs: [String!]!): [CarImg!]!
+  updateCarImgs(carCustomId: String!, imgURLs: [String!]!): [CarImg!]!
+  login(email: String!, password: String!): String!
+  logout: String!
+  restoreAccessToken: String!
+  createPayment(impUid: String!, merchantUid: String!, amount: Float!, carCustomId: String!): Payment!
+  cancelPayment(merchantUid: String!, cancelRequestAmount: Float!, cancelReason: String): Payment!
+  createUser(email: String!, password: String!, name: String!, age: String!): User!
+  updateUser(updateUserInput: UpdateUserInput!, email: String!): User!
+  deleteUser(email: String!): Boolean!
+  restoreUser(email: String!): Boolean!
+}
+
+input CreateCarModelInput {
+  id: String!
+  model: String!
+  range: Int!
+  speed: Int!
+  zero100: Float!
+  price: Int!
+  wd: String!
+  description: String!
+  carTypeId: String!
+  carTags: [String!]!
+}
+
+input UpdateCarModelInput {
+  id: String
+  model: String
+  range: Int
+  speed: Int
+  zero100: Float
+  price: Int
+  wd: String
+  description: String
+  carTypeId: String
+  carTags: [String!]
+}
+
+input CreateCarCustomInput {
+  color: String!
+  interior: String!
+  isAuto: Boolean!
+  carModelId: String!
+  createCarWheelInput: CreateCarWheelInput!
+}
+
+input CreateCarWheelInput {
+  wheelId: String!
+  wheelName: String!
+  wheelSize: Int!
+  wheelPrice: Int!
+}
+
+input UpdateCarCustomInput {
+  color: String
+  interior: String
+  isAuto: Boolean
+  carModelId: String
+  createCarWheelInput: CreateCarWheelInput
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input UpdateUserInput {
+  email: String
+  password: String
+  name: String
+  age: String
+}

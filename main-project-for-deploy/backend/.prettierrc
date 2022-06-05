@@ -1,0 +1,8 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "semi": true,
+  "prettier/prettier":["error",{},{"usePrettierrc":true}]
+
+
+}
