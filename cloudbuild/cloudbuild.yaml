@@ -1,14 +1,14 @@
 steps:
   - name: docker/compose:1.29.0
     args:
-      # - -f
-      # - main-project-leokim1178/main-project/backend/docker-compose.yaml
+      - -f
+      - main-project/backend/docker-compose.yaml
       - build
 
   - name: docker/compose:1.29.0
     args:
-      # - -f
-      # - main-project-leokim1178/main-project/backend/docker-compose.yaml
+      - -f
+      - main-project/backend/docker-compose.yaml
       - push
 
   - name: "gcr.io/cloud-builders/kubectl"
@@ -17,7 +17,7 @@ steps:
         "set",
         "image",
         "deployment/my-backend",
-        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/main-project:0.01.0",
+        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/main-project:0.01.1",
       ]
     env:
       - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
