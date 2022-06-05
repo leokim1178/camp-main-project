@@ -9,7 +9,15 @@ import { ElasticsearchModule } from '@nestjs/elasticsearch';
     imports: [
         TypeOrmModule.forFeature([CarType]),
         ElasticsearchModule.register({
-            node: 'http://elasticsearch:9200', //node는 컴퓨터라는 뜻
+            node: 'https://search-my-elasticsearch-ce5vfgm4ifqvzhhxsrqjnveasm.us-west-2.es.amazonaws.com:443', //node는 컴퓨터라는 뜻
+            auth:{
+                username: "leoelasticsearch",
+                password: "1234Leo1178!"
+            },
+            headers:{
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
         }),
     ],
     providers: [
