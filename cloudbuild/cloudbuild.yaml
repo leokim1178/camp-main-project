@@ -17,8 +17,17 @@ steps:
         "set",
         "image",
         "deployment/my-backend",
-        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/main-project:0.01.1",
+        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/main-project:0.01.2",
       ]
     env:
       - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
       - CLOUDSDK_CONTAINER_CLUSTER=leo-mp-cluster
+
+  - name: "gcr.io/cloud-builders/kubectl"
+    args:
+      [
+        "set",
+        "image",
+        "deployment/my-logstash",
+        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/my-logstash:0.6",
+      ]
