@@ -17,7 +17,7 @@ steps:
         "set",
         "image",
         "deployment/my-backend",
-        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/main-project:0.01.3",
+        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/main-project:0.01.4",
       ]
     env:
       - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
@@ -29,7 +29,7 @@ steps:
         "set",
         "image",
         "deployment/my-logstash",
-        "main-project-sha256-1=asia.gcr.io/main-project-leokim1178/my-logstash:0.7",
+        "my-logstash-sha256-1=asia.gcr.io/main-project-leokim1178/my-logstash:0.8",
       ]
     env:
       - CLOUDSDK_COMPUTE_ZONE=asia-northeast3
