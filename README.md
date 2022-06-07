@@ -9,14 +9,9 @@ Tesla 홈페이지를 참고했습니다만,
 없는 기능이 들어가 있기도 합니다.
 <br>
 <br>
-api 중 Car api들의 경우 fetch를 제외한 나머지 CRU 기능들은 웹의 관리자를 대상으로 구현했으며
+api 중 Car apis는 관리자용 기능입니다.
 이외의 api들은 웹을 방문할 실제 고객들이 대상입니다.
 <br>
-
-**⚠️ 공지사항 ⚠️**
-
-elk stacks 가상머신 기능을 gcp가 최근에 삭제했습니다ㅠ
-elk 관련 기능은 추후 업데이트 예정입니다..!
 
 ## 배포 주소
 
@@ -41,6 +36,10 @@ https://main-project.leo3179.shop/graphql
   </p>
 <p align="center">
 <img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/mysql-icon.svg">
+&nbsp
+&nbsp
+&nbsp
+<img alt= "icon" wide="60" height="60" src ="https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png">
 
   </p>
    <p align="center">
@@ -48,6 +47,14 @@ https://main-project.leo3179.shop/graphql
   </p>
 <p align="center">
 <img alt= "icon" wide="60" height="60" src ="https://techstack-generator.vercel.app/kubernetes-icon.svg">
+&nbsp
+&nbsp
+&nbsp
+<img alt= "icon" wide="60" height="60" src="https://lirp.cdn-website.com/aa0ef369/dms3rep/multi/opt/google-cloud-icon-570w.png">
+&nbsp
+&nbsp
+&nbsp
+<img alt= "icon" wide="60" height="60" src="https://techstack-generator.vercel.app/aws-icon.svg">
   </p>
     </p>
        <p align="center">
@@ -59,6 +66,14 @@ https://main-project.leo3179.shop/graphql
 <img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/docker-icon.svg">
   &nbsp&nbsp
 <img alt= "icon" wide="60" height="60" src ="https://symbols.getvecta.com/stencil_89/37_nestjs-icon.a67daec196.svg">
+  </p>
+  <p align="center">
+<img alt= "icon" wide="60" height="60" src ="./readme-imgs/elasticsearch.png">
+<img alt= "icon" wide="60" height="60" src ="./readme-imgs/logstash.png">
+<img alt= "icon" wide="60" height="60" src ="./readme-imgs/kibana.png">
+  </p>
+  <p align="center">
+  <img alt= "icon" wide="60" height="60" src ="https://nesoy.github.io/assets/posts/20170413/1.PNG">
   </p>
 
 ## ERD 설계
@@ -84,7 +99,7 @@ https://main-project.leo3179.shop/graphql
 
 ## 파이프 라인
 
-### 커스타마이징 모델 정보 검색 파이프라인
+### 모델 정보 검색 파이프라인
 
 ![](/readme-imgs/검색%20파이프라인.001.jpeg)
 
@@ -146,12 +161,14 @@ git push origin main
 ├─ 🐳 cloudbuild.yaml : CI/CD를 위한 github - gcp cloudbuild 연결 yaml
 └─ main-project-for-deploy
    ├─ 🚀 backend
-   │  ├─ 🐳 docker-compose.yaml : kubernetes pods 생성 yaml,
+   │  ├─ 🐳 docker-compose.yaml
+   │  ├─ 🐳 Dockerfile : my-backend
+   │  ├─ 🐳 Dockerfile.logstash : my-logstash
    │  │                           데이터베이스는 gcp vm mysql로 대체했습니다
    │  ├─ 🍦 elk
    │  │  ├─ elasticsearch
    │  │  │  └─ car_type_template.json
-   │  │  │      : elasticsearch 세팅 & 맵핑 config용 템플릿
+   │  │  │      : elasticsearch settings & mappings template
    │  │  ├─ /kibana
    │  │  └─ /logstash : logstash.config 파일
    │  ├─ /functions : 배포한 gcp functions 정리
@@ -160,15 +177,7 @@ git push origin main
    │     ├─ 🍇 apis
    │     │  ├─ auth : 로그인,로그아웃,소셜로그인 api
    │     │  ├─ 🚗 car
-   │     │  │  ├─ carCustom : 내부 예시는 carCustom 폴더만...
-   │     │  │  │  ├─ carCustom.module.ts
-   │     │  │  │  ├─ carCustom.resolver.ts
-   │     │  │  │  ├─ carCustom.service.ts
-   │     │  │  │  ├─ dto
-   │     │  │  │  │  ├─ createCarCustomInput.ts
-   │     │  │  │  │  └─ updateCarCustomInput.ts
-   │     │  │  │  └─ entities
-   │     │  │  │     └─ carCustom.entity.ts
+   │     │  │  ├─ /carCustom
    │     │  │  ├─ /carImg
    │     │  │  ├─ /carModel
    │     │  │  ├─ /carTag
@@ -180,7 +189,7 @@ git push origin main
    │     ├─ 👑 app.module.ts
    │     ├─ 📄 commons
    │     │  ├─ /auth : 로그인, 소셜 로그인, 로그아웃 auth strategies & guards
-   │     │  └─ /filter : exception filter가 들어있어용
+   │     │  └─ /filter : exception filter
    │     └─ main.ts
    └─ 🚀 frontend
       ├─ /img
@@ -194,7 +203,7 @@ git push origin main
 ## .env 설정
 
 1. 소셜 로그인 관련 키s(naver,google,kakao)
-2. gcp storage & bigQuery 관련 키s
+2. gcp storage & bigQuery 관련 keys
 3. 다음주 로또 1등 당첨번호
 
 ## 정보

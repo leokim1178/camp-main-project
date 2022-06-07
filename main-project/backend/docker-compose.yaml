@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   my-backend:
-    image: asia.gcr.io/main-project-leokim1178/main-project:0.01.7
+    image: asia.gcr.io/main-project-leokim1178/main-project:0.01.8
     platform: linux/x86_64
     build:
       context: .
@@ -12,7 +12,7 @@ services:
       - 3000:3000
 
   logstash:
-    image: asia.gcr.io/main-project-leokim1178/my-logstash:0.00.2
+    image: asia.gcr.io/main-project-leokim1178/my-logstash:0.00.3
     platform: linux/x86_64
     build:
       context: .
