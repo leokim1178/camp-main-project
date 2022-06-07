@@ -46,7 +46,7 @@ export class CarTypeResolver {
 
       if (searchResult) {
         // 4. 해당정보의 검색값을 CarType으로 정리한다
-        const resultArray = searchResult['hits']['hits'];
+        const resultArray = searchResult.body.hits.hits;
 
         const finalResult = resultArray.map((el) => {
           const result: CarType = {
