@@ -105,15 +105,7 @@ https://main-project.leo3179.shop/graphql
 
 ### 로그인 파이프 라인
 
-```sh
-###업데이트 예정###
-```
-
 ### 소셜 로그인 파이프 라인
-
-```sh
-###업데이트 예정###
-```
 
 ## API 설계
 
@@ -202,7 +194,7 @@ git push origin main
 
 ## .env 설정
 
-1. 소셜 로그인 관련 키s(naver,google,kakao)
+1. 소셜 로그인 관련 keys(naver,google,kakao)
 2. gcp storage & bigQuery 관련 keys
 3. 다음주 로또 1등 당첨번호
 
