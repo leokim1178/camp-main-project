@@ -8,10 +8,7 @@
 Tesla 홈페이지를 참고했습니다만,
 없는 기능이 들어가 있기도 합니다.
 <br>
-<br>
-api 중 Car apis는 관리자용 기능입니다.
-이외의 api들은 웹을 방문할 실제 고객들이 대상입니다.
-<br>
+
 
 ## 배포 주소
 
@@ -196,7 +193,6 @@ git push origin main
 
 1. 소셜 로그인 관련 keys(naver,google,kakao)
 2. gcp storage & bigQuery 관련 keys
-3. 다음주 로또 1등 당첨번호
 
 ## 정보
 
