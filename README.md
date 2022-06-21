@@ -7,7 +7,6 @@
 MySQL과 Nestjs를 이용해 구성했습니다.
 Tesla 홈페이지를 참고하며 만들었습니다.
 공부용이기에 없는 기능이 들어가 있기도 합니다.
-<br>
 
 ## 목차
 
@@ -212,7 +211,6 @@ URL : https://main-project.leo3179.shop/graphql
 
 1. 소셜 로그인 관련 keys(naver,google,kakao)
 2. gcp storage & bigQuery 관련 keys
-3. 다음주 로또 1등 당첨번호
 
 ## 정보
 
