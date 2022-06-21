@@ -2,22 +2,51 @@
 <img src="https://capsule-render.vercel.app/api?&type=waving&color=timeAuto&height=180&section=header&text=Main Project%20Tesla&fontSize=50&animation=fadeIn&fontAlignY=45" />
   </p>
 
-> Tesla를 주제로 간단히 만든 백엔드
+> Tesla 모의어플 백엔드
 
-공부한 내용들을 바탕으로 api를 구성했습니다
-Tesla 홈페이지를 참고했습니다만,
-없는 기능이 들어가 있기도 합니다.
+MySQL과 Nestjs를 이용해 구성했습니다.
+Tesla 홈페이지를 참고하며 만들었습니다.
+공부용이기에 없는 기능이 들어가 있기도 합니다.
 <br>
-<br>
-api 중 Car apis는 관리자용 기능입니다.
-이외의 api들은 웹을 방문할 실제 고객들이 대상입니다.
-<br>
+
+## 목차
+
+[목차](#목차)
+
+[배포 주소](#배포-주소)
+
+[서버,db 설계](#서버db-설계)
+
+[기술 스택](#기술-스택)
+
+[ERD 설계](#erd-설계)
+
+[파이프 라인](#파이프-라인)
+
+- [검색 파이프라인](#모델정보-검색-파이프라인)
+
+[프로젝트 설치 및 실행 방법](#프로젝트-설치-및-실행-방법)
+
+[업데이트 내역](#업데이트-내역)
+
+[폴더 구조](#폴더-구조)
+
+[.env 설정](#env-설정)
 
 ## 배포 주소
 
 ```sh
 https://main-project.leo3179.shop/graphql
 ```
+
+## 서버,DB 설계
+
+- Server FrameWork : Nest.js & Graphql
+- Build :
+  - Code-first build
+  - Graphql build : module - resolver - service (소셜 로그인과 health-checking용 controller는 존재)
+- DB : Mysql (RDBMS)
+- ORM : TypeORM
 
 ## 기술 스택
 
@@ -99,96 +128,83 @@ https://main-project.leo3179.shop/graphql
 
 ## 파이프 라인
 
-### 모델 정보 검색 파이프라인
+### 모델정보 검색 파이프라인
 
 ![](/readme-imgs/검색%20파이프라인.001.jpeg)
 
-### 로그인 파이프 라인
-
-### 소셜 로그인 파이프 라인
-
-## API 설계
-
-- Nest.js
-- Code-first build
-- graphql build : module - resolver - service (소셜 로그인과 health-checking용 controller는 존재)
-- typORM 적용
-
 ## 프로젝트 설치 및 실행 방법
 
-```sh
-# 설치
-gcp kubenetes를 통해 설치
+- git clone https://github.com/leokim1178/main-project-1
+- terminal commands
 
-# graphql docs를 참고하여 api endpoint를 통해 프론트로 연결
-https://main-project.leo3179.shop/graphql
+```
+# local
+brew install mysql
+mysql.server start
+mysql_secure_installation
+비밀번호(1234) 및 기타 설정
+mysql -u root -p
+Enter password : 1234
+yarn start:dev
 
-# 소셜 로그인 endpoint
-https://main-project.leo3179.shop/login/naver
-https://main-project.leo3179.shop/login/kakao
-https://main-project.leo3179.shop/login/google
+# local :  docker (권장)
+docker 설치
+docker compose build
+docker compose up
 
-#업데이트 방법
-git add .
-git commit -m "update this project"
-git push origin main
-
+# Deployed Server URL
+URL : https://main-project.leo3179.shop/graphql
 ```
 
 ## 업데이트 내역
 
-- 1.01.0
-  - 추가 : 문서 업데이트 README.md 작성
-    - README.md 관련 이미지들 추가
-  - 수정 : 폴더 정리
-- 1.00.9
-  - 무중단 배포 & github CI/CD 구현 성공
-- 1.00.8
-  - 무중단 배포 & github CI/CD 구현 시도
+- 0.02.0
+  - 리팩토링 & ELK 배포
 
 ## 폴더 구조
 
 ```
-🏠 b02-main-project
+
+🏠 main-project
 ├─ 🐳 cloudbuild.yaml : CI/CD를 위한 github - gcp cloudbuild 연결 yaml
 └─ main-project-for-deploy
-   ├─ 🚀 backend
-   │  ├─ 🐳 docker-compose.yaml
-   │  ├─ 🐳 Dockerfile : my-backend
-   │  ├─ 🐳 Dockerfile.logstash : my-logstash
-   │  │                           데이터베이스는 gcp vm mysql로 대체했습니다
-   │  ├─ 🍦 elk
-   │  │  ├─ elasticsearch
-   │  │  │  └─ car_type_template.json
-   │  │  │      : elasticsearch settings & mappings template
-   │  │  ├─ /kibana
-   │  │  └─ /logstash : logstash.config 파일
-   │  ├─ /functions : 배포한 gcp functions 정리
-   │  ├─ 🎒 package.json
-   │  └─ src
-   │     ├─ 🍇 apis
-   │     │  ├─ auth : 로그인,로그아웃,소셜로그인 api
-   │     │  ├─ 🚗 car
-   │     │  │  ├─ /carCustom
-   │     │  │  ├─ /carImg
-   │     │  │  ├─ /carModel
-   │     │  │  ├─ /carTag
-   │     │  │  ├─ /carType
-   │     │  │  └─ /carWheel
-   │     │  ├─ /iamport : iamport에 정보 요청 및 환불을 위한 api
-   │     │  ├─ /payment : 결제 api
-   │     │  └─ /user : 회원가입, 회원정보 조회,수정 등
-   │     ├─ 👑 app.module.ts
-   │     ├─ 📄 commons
-   │     │  ├─ /auth : 로그인, 소셜 로그인, 로그아웃 auth strategies & guards
-   │     │  └─ /filter : exception filter
-   │     └─ main.ts
-   └─ 🚀 frontend
-      ├─ /img
-      ├─ login
-      │  ├─ index.css
-      │  └─ index.html
-      └─ payment.html
+├─ 🚀 backend
+│ ├─ 🐳 docker-compose.yaml
+│ ├─ 🐳 Dockerfile : my-backend
+│ ├─ 🐳 Dockerfile.logstash : my-logstash
+│ │ 데이터베이스는 gcp vm mysql로 대체했습니다
+│ ├─ 🍦 elk
+│ │ ├─ elasticsearch
+│ │ │ └─ car_type_template.json
+│ │ │ : elasticsearch settings & mappings template
+│ │ ├─ /kibana
+│ │ └─ /logstash : logstash.config 파일
+│ ├─ /functions : 배포한 gcp functions 정리
+│ ├─ 🎒 package.json
+│ └─ src
+│ ├─ 🍇 apis
+│ │ ├─ auth : 로그인,로그아웃,소셜로그인 api
+│ │ ├─ 🚗 car
+│ │ │ ├─ /carCustom
+│ │ │ ├─ /carImg
+│ │ │ ├─ /carModel
+│ │ │ ├─ /carTag
+│ │ │ ├─ /carType
+│ │ │ └─ /carWheel
+│ │ ├─ /iamport : iamport에 정보 요청 및 환불을 위한 api
+│ │ ├─ /payment : 결제 api
+│ │ └─ /user : 회원가입, 회원정보 조회,수정 등
+│ ├─ 👑 app.module.ts
+│ ├─ 📄 commons
+│ │ ├─ /auth : 로그인, 소셜 로그인, 로그아웃 auth strategies & guards
+│ │ └─ /filter : exception filter
+│ └─ main.ts
+└─ 🚀 frontend
+├─ /img
+├─ login
+│ ├─ index.css
+│ └─ index.html
+└─ payment.html
 
 ```
 
@@ -205,3 +221,7 @@ git push origin main
 email : leo3179@naver.com
 
 <!-- Markdown link & img dfn's -->
+
+```
+
+```
