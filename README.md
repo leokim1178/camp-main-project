@@ -89,7 +89,6 @@ https://main-project.leo3179.shop/graphql
 🏖&nbsp&nbsp&nbspWith...
   </p>
 <p align="center">
-<img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/restapi-icon.svg">
 <img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/graphql-icon.svg">
 <img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/docker-icon.svg">
   &nbsp&nbsp
