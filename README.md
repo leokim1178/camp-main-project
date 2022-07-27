@@ -34,9 +34,8 @@ Tesla 홈페이지를 참고하며 만들었습니다.
 
 ```
 git clone https://github.com/leokim1178/camp-main-project
-git checkout taeyoung
-cd backend
-env/.env 추가
+cd main-project/backend
+# .env 추가
 docker compose build
 docker compose up
 ```
