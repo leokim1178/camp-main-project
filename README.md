@@ -2,43 +2,53 @@
 <img src="https://capsule-render.vercel.app/api?&type=waving&color=timeAuto&height=180&section=header&text=Main Project%20Tesla&fontSize=50&animation=fadeIn&fontAlignY=45" />
   </p>
 
-> Tesla 모의어플 백엔드
+# 🏎 TESLA 모의어플 백엔드
 
 MySQL과 Nestjs를 이용해 구성했습니다.
 Tesla 홈페이지를 참고하며 만들었습니다.
-공부용이기에 없는 기능이 들어가 있기도 합니다.
+없는 기능이 들어가 있기도 합니다.
+모델 정보 검색이 가능합니다
 
-## 목차
+---
 
-[목차](#목차)
+## 📑 목차
 
-[배포 주소](#배포-주소)
+- [🏎 TESLA 모의어플 백엔드](#-tesla-모의어플-백엔드)
+  - [📑 목차](#-목차)
+  - [🚀 프로젝트 실행 및 테스트](#-프로젝트-실행-및-테스트)
+  - [🕹 서버,DB 설계](#-서버db-설계)
+  - [💻 기술 스택](#-기술-스택)
+  - [ERD 설계](#erd-설계)
+  - [프로젝트 설치 및 실행 방법](#프로젝트-설치-및-실행-방법)
+  - [파이프 라인](#파이프-라인)
+    - [모델정보 검색 파이프라인](#모델정보-검색-파이프라인)
+  - [폴더 구조](#폴더-구조)
+  - [🔒 ENV](#-env)
 
-[서버,db 설계](#서버db-설계)
+---
 
-[기술 스택](#기술-스택)
+## 🚀 프로젝트 실행 및 테스트
 
-[ERD 설계](#erd-설계)
+- local에서 테스트 💡
 
-[파이프 라인](#파이프-라인)
+- 실행 명령어
 
-- [검색 파이프라인](#모델정보-검색-파이프라인)
-
-[프로젝트 설치 및 실행 방법](#프로젝트-설치-및-실행-방법)
-
-[업데이트 내역](#업데이트-내역)
-
-[폴더 구조](#폴더-구조)
-
-[.env 설정](#env-설정)
-
-## 배포 주소
-
-```sh
-https://main-project.leo3179.shop/graphql
+```
+git clone https://github.com/leokim1178/camp-main-project
+git checkout taeyoung
+cd backend
+env/.env 추가
+docker compose build
+docker compose up
 ```
 
-## 서버,DB 설계
+- graphql에서 테스트하기
+
+http://localhost:3000/graphql
+
+---
+
+## 🕹 서버,DB 설계
 
 - Server FrameWork : Nest.js & Graphql
 - Build :
@@ -47,61 +57,50 @@ https://main-project.leo3179.shop/graphql
 - DB : Mysql (RDBMS)
 - ORM : TypeORM
 
-## 기술 스택
+---
 
-<br>
-<div align='center'> 🖥&nbsp&nbsp&nbsp사용한 기술 스택</div>
-<br>
-<p align="center">
+## 💻 기술 스택
+
+<div align="center">
 📑&nbsp&nbsp&nbsp구성 언어
-  </p>
-<p align="center">
-<img alt= "icon" wide="80" height="80" src ="https://techstack-generator.vercel.app/js-icon.svg">
-<img alt= "icon" wide="80" height="80" src ="https://techstack-generator.vercel.app/ts-icon.svg">
-  </p>
- <p align="center">
-🏠&nbsp&nbsp&nbsp데이터베이스
-  </p>
-<p align="center">
-<img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/mysql-icon.svg">
-&nbsp
-&nbsp
-&nbsp
-<img alt= "icon" wide="60" height="60" src ="https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png">
+<br>
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> 
+  <img src="https://img.shields.io/badge/typescript-02569B?style=for-the-badge&logo=typescript&logoColor=white"> 
+  </div>
 
-  </p>
-   <p align="center">
-🚀&nbsp&nbsp&nbsp배포
-  </p>
-<p align="center">
-<img alt= "icon" wide="60" height="60" src ="https://techstack-generator.vercel.app/kubernetes-icon.svg">
-&nbsp
-&nbsp
-&nbsp
-<img alt= "icon" wide="60" height="60" src="https://lirp.cdn-website.com/aa0ef369/dms3rep/multi/opt/google-cloud-icon-570w.png">
-&nbsp
-&nbsp
-&nbsp
-<img alt= "icon" wide="60" height="60" src="https://techstack-generator.vercel.app/aws-icon.svg">
-  </p>
-    </p>
-       <p align="center">
-🏖&nbsp&nbsp&nbspWith...
-  </p>
-<p align="center">
-<img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/graphql-icon.svg">
-<img alt= "icon" wide="65" height="65" src ="https://techstack-generator.vercel.app/docker-icon.svg">
-  &nbsp&nbsp
-<img alt= "icon" wide="60" height="60" src ="https://symbols.getvecta.com/stencil_89/37_nestjs-icon.a67daec196.svg">
-  </p>
-  <p align="center">
-<img alt= "icon" wide="60" height="60" src ="./readme-imgs/elasticsearch.png">
-<img alt= "icon" wide="60" height="60" src ="./readme-imgs/logstash.png">
-<img alt= "icon" wide="60" height="60" src ="./readme-imgs/kibana.png">
-  </p>
-  <p align="center">
-  <img alt= "icon" wide="60" height="60" src ="https://nesoy.github.io/assets/posts/20170413/1.PNG">
-  </p>
+<div align="center">
+  🚂  &nbsp&nbsp 서버
+  <br>
+  <img src="https://img.shields.io/badge/nestjs-D33A3F?style=for-the-badge&logo=nestjs&logoColor=white">
+  <img src="https://img.shields.io/badge/docker-3c90e5?style=for-the-badge&logo=docker&logoColor=white"> 
+  <img src="https://img.shields.io/badge/graphql-C74199?style=for-the-badge&logo=graphql&logoColor=white">
+  </div>
+
+   <div align="center">
+🚀&nbsp&nbsp&nbsp 배포
+<br>
+  <img src="https://img.shields.io/badge/kubernetes-396EDC?style=for-the-badge&logo=kubernetes&logoColor=white">
+    <img src="https://img.shields.io/badge/gcp-d44a33?style=for-the-badge&logo=googlecloud&logoColor=yellow"> 
+  <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> 
+  </div>
+
+ <div align="center">
+💾&nbsp&nbsp&nbsp 데이터
+<br>
+  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  <img src="https://img.shields.io/badge/redis-c03b28?style=for-the-badge&logo=redis&logoColor=white"> 
+  </div>
+
+ <div align="center">
+🔍&nbsp&nbsp&nbsp 검색
+<br>
+  <img src="https://img.shields.io/badge/elasticsearch-59b2a7?style=for-the-badge&logo=elasticsearch&logoColor=hotpink"> 
+  <img src="https://img.shields.io/badge/logstash-e8b631?style=for-the-badge&logo=logstash&logoColor=black"> 
+  <img src="https://img.shields.io/badge/kibana-d34e7f?style=for-the-badge&logo=kibana&logoColor=lightgreen">
+<br>
+</div>
+
+---
 
 ## ERD 설계
 
@@ -124,11 +123,7 @@ https://main-project.leo3179.shop/graphql
 👩🏻‍💻 User
 ```
 
-## 파이프 라인
-
-### 모델정보 검색 파이프라인
-
-![](/readme-imgs/검색%20파이프라인.001.jpeg)
+---
 
 ## 프로젝트 설치 및 실행 방법
 
@@ -154,10 +149,15 @@ docker compose up
 URL : https://main-project.leo3179.shop/graphql
 ```
 
-## 업데이트 내역
+---
 
-- 0.02.0
-  - 리팩토링 & ELK 배포
+## 파이프 라인
+
+### 모델정보 검색 파이프라인
+
+![](/readme-imgs/검색%20파이프라인.001.jpeg)
+
+---
 
 ## 폴더 구조
 
@@ -206,19 +206,23 @@ URL : https://main-project.leo3179.shop/graphql
 
 ```
 
-## .env 설정
+---
 
-1. 소셜 로그인 관련 keys(naver,google,kakao)
-2. gcp storage & bigQuery 관련 keys
+## 🔒 ENV
 
-## 정보
-
-블로그 : [leoKim's velog](https://story0tae.tistory.com/)
-<br>
-email : leo3179@naver.com
+```
+IMP_KEY=
+IMP_SECRET_KEY=
+IMP_CODE=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+KAKAO_CLIENT_ID=
+KAKAO_CLIENT_SECRET=
+NAVER_CLIENT_ID=
+NAVER_CLIENT_SECRET=
+STORAGE_BUCKET=
+STORAGE_KEY_FILENAME=
+STORAGE_PROJECT_ID=
+```
 
 <!-- Markdown link & img dfn's -->
-
-```
-
-```
