@@ -18,11 +18,10 @@ Tesla 홈페이지를 참고하며 만들었습니다.
   - [🚀 프로젝트 실행 및 테스트](#-프로젝트-실행-및-테스트)
   - [🕹 서버,DB 설계](#-서버db-설계)
   - [💻 기술 스택](#-기술-스택)
-  - [ERD 설계](#erd-설계)
-  - [프로젝트 설치 및 실행 방법](#프로젝트-설치-및-실행-방법)
-  - [파이프 라인](#파이프-라인)
+  - [💾 ERD 설계](#-erd-설계)
+  - [🛠 파이프 라인](#-파이프-라인)
     - [모델정보 검색 파이프라인](#모델정보-검색-파이프라인)
-  - [폴더 구조](#폴더-구조)
+  - [🗂 폴더 구조](#-폴더-구조)
   - [🔒 ENV](#-env)
 
 ---
@@ -43,8 +42,7 @@ docker compose up
 ```
 
 - graphql에서 테스트하기
-
-http://localhost:3000/graphql
+  - http://localhost:3000/graphql
 
 ---
 
@@ -102,7 +100,7 @@ http://localhost:3000/graphql
 
 ---
 
-## ERD 설계
+## 💾 ERD 설계
 
 ![](/readme-imgs/main-project-erd.png)
 
@@ -123,46 +121,15 @@ http://localhost:3000/graphql
 👩🏻‍💻 User
 ```
 
----
+## 🛠 파이프 라인
 
-## 프로젝트 설치 및 실행 방법
-
-- git clone https://github.com/leokim1178/main-project-1
-- terminal commands
-
-```
-# local
-brew install mysql
-mysql.server start
-mysql_secure_installation
-비밀번호(1234) 및 기타 설정
-mysql -u root -p
-Enter password : 1234
-yarn start:dev
-
-# local :  docker (권장)
-docker 설치
-docker compose build
-docker compose up
-
-# Deployed Server URL
-URL : https://main-project.leo3179.shop/graphql
-```
+### [모델정보 검색 파이프라인](/readme-imgs/검색%20파이프라인.001.jpeg)
 
 ---
 
-## 파이프 라인
-
-### 모델정보 검색 파이프라인
-
-![](/readme-imgs/검색%20파이프라인.001.jpeg)
-
----
-
-## 폴더 구조
+## 🗂 폴더 구조
 
 ```
-
 🏠 main-project
 ├─ 🐳 cloudbuild.yaml : CI/CD를 위한 github - gcp cloudbuild 연결 yaml
 └─ main-project-for-deploy
